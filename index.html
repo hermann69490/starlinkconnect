@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starlink Connect – Kits Starlink V4 Standard, activation et assistance</title>
+<meta name="description" content="Starlink Connect vend des kits Starlink V4 Standard neufs, avec activation rapide selon la région, assistance technique et livraison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#E6F0F8;
+    --paper:#F8FBFD;
+    --ink:#0C2340;
+    --ink-soft:#44607F;
+    --cobalt:#1B55F2;
+    --wa:#17A34A;
+    --wa-dark:#118238;
+    --line:#C9DAE8;
+    --head:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+    --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1080px,100% - 40px);margin-inline:auto}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(248,251,253,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--head);font-weight:800;font-size:1.3rem;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .logo svg{width:28px;height:28px}
+  nav{display:flex;gap:26px;align-items:center}
+  nav a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--ink-soft)}
+  nav a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:1rem;text-decoration:none;padding:14px 24px;border-radius:999px;background:var(--wa);color:#fff;border:0;cursor:pointer;transition:background .15s}
+  .btn:hover{background:var(--wa-dark)}
+  .btn svg{width:20px;height:20px;fill:currentColor}
+  .btn.small{padding:10px 18px;font-size:.92rem}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+
+  /* Hero */
+  .hero{background:var(--sky);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0 80px}
+  h1{font-family:var(--head);font-weight:800;font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.04;letter-spacing:-.025em;max-width:13ch}
+  .hero p.lead{margin-top:22px;font-size:1.15rem;color:var(--ink-soft);max-width:44ch}
+  .hero-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
+  .hero-note{margin-top:18px;font-size:.92rem;color:var(--ink-soft)}
+
+  .radar{position:relative;aspect-ratio:1;width:100%;max-width:440px;margin-inline:auto}
+  .radar svg{width:100%;height:100%;overflow:visible}
+  .ring{fill:none;stroke:var(--cobalt);stroke-width:1.5;opacity:.35;transform-origin:200px 200px}
+  .ring.r1{opacity:.55}
+  .ring.r3{opacity:.2}
+  .pulse{fill:none;stroke:var(--cobalt);stroke-width:2;transform-origin:200px 200px;animation:pulse 2.8s ease-out 1 .4s both}
+  @keyframes pulse{from{transform:scale(.15);opacity:.9}to{transform:scale(1);opacity:0}}
+  .radar-label{font-family:var(--head);font-weight:700;font-size:15px;fill:var(--ink)}
+  .radar-label.soft{font-family:var(--body);font-weight:500;font-size:13px;fill:var(--ink-soft)}
+
+  /* Sections */
+  section{padding:84px 0}
+  h2{font-family:var(--head);font-weight:800;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.1;letter-spacing:-.02em;max-width:20ch}
+  .intro{margin-top:14px;color:var(--ink-soft);max-width:52ch}
+
+  .services{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+  .service{padding:28px 28px 28px 0;border-bottom:1px solid var(--line)}
+  .service:nth-child(even){padding-left:28px;padding-right:0;border-left:1px solid var(--line)}
+  .service h3{font-family:var(--head);font-weight:700;font-size:1.3rem;letter-spacing:-.01em}
+  .service p{margin-top:8px;color:var(--ink-soft);max-width:38ch}
+
+  /* Photos */
+  .photos{background:var(--paper);padding-top:0}
+  .photo-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .photo-grid figure{margin:0}
+  .photo-grid img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px;background:var(--sky)}
+  .photo-grid .frame{aspect-ratio:1;overflow:hidden;border-radius:6px}
+  .photo-grid .wide .frame{aspect-ratio:16/8}
+  .photo-grid .wide{grid-column:1/-1}
+  .photo-grid figcaption{margin-top:10px;font-size:.92rem;color:var(--ink-soft);max-width:44ch}
+
+  /* Specs */
+  .specs-band{background:var(--ink);color:#EAF2FA}
+  .specs-band h2{color:#fff}
+  .specs-band .intro{color:#AFC3D8}
+  .spec-list{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+  .spec{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .spec dt{color:#AFC3D8}
+  .spec dd{font-family:var(--head);font-weight:700;text-align:right}
+  .fine{margin-top:22px;font-size:.88rem;color:#8FA8C2}
+
+  /* Steps */
+  .steps{margin-top:44px;list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+  .steps li{counter-increment:s;position:relative;padding-top:56px}
+  .steps li::before{content:counter(s);position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;background:var(--cobalt);color:#fff;font-family:var(--head);font-weight:800;display:grid;place-items:center}
+  .steps li::after{content:"";position:absolute;top:19px;left:48px;right:-24px;height:2px;background:var(--line)}
+  .steps li:last-child::after{display:none}
+  .steps h3{font-family:var(--head);font-weight:700;font-size:1.1rem}
+  .steps p{margin-top:6px;font-size:.95rem;color:var(--ink-soft)}
+
+  /* FAQ */
+  .faq{margin-top:40px;max-width:760px}
+  details{border-bottom:1px solid var(--line);padding:20px 0}
+  details:first-child{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-family:var(--head);font-weight:700;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.5rem;font-weight:500;color:var(--cobalt);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:10px;color:var(--ink-soft);max-width:60ch}
+
+  /* Contact */
+  .contact{background:var(--sky)}
+  .contact-box{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+  .contact .btn{font-size:1.1rem;padding:18px 30px}
+  .phone{font-family:var(--head);font-weight:700;font-size:1.5rem;margin-top:6px}
+  .contact-side p{color:var(--ink-soft)}
+
+  footer{padding:36px 0 96px;font-size:.88rem;color:var(--ink-soft)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+  footer p{max-width:62ch}
+
+  .float-wa{display:none;position:fixed;right:16px;bottom:16px;z-index:30;box-shadow:0 6px 20px rgba(12,35,64,.25)}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;padding:44px 0 52px}
+    .radar{max-width:320px;order:-1}
+    nav a.hide-m{display:none}
+    .services{grid-template-columns:1fr}
+    .service,.service:nth-child(even){padding:24px 0;border-left:0}
+    .spec-list{grid-template-columns:1fr}
+    .photo-grid{grid-template-columns:1fr 1fr;gap:14px}
+    .photo-grid .wide .frame{aspect-ratio:16/10}
+    .photo-grid figure:last-child{grid-column:1/-1}
+    .photo-grid figure:last-child .frame{aspect-ratio:16/10}
+    .steps{grid-template-columns:1fr;gap:28px}
+    .steps li{padding:0 0 0 60px;min-height:44px}
+    .steps li::after{top:44px;left:19px;right:auto;width:2px;height:calc(100% - 4px + 28px - 44px + 4px)}
+    .contact-box{grid-template-columns:1fr}
+    section{padding:60px 0}
+    .float-wa{display:inline-flex}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .pulse{animation:none;opacity:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#haut" aria-label="Starlink Connect, accueil">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="3.2" fill="#1B55F2"/><circle cx="16" cy="16" r="8" fill="none" stroke="#1B55F2" stroke-width="2" opacity=".6"/><circle cx="16" cy="16" r="13" fill="none" stroke="#1B55F2" stroke-width="2" opacity=".3"/></svg>
+      Starlink Connect
+    </a>
+    <nav aria-label="Navigation principale">
+      <a class="hide-m" href="#services">Services</a>
+      <a class="hide-m" href="#kit">Le kit</a>
+      <a class="hide-m" href="#faq">Questions</a>
+      <a class="btn small" href="https://wa.me/2290169821059?text=Bonjour%20Starlink%20Connect%2C%20je%20souhaite%20commander%20un%20kit%20Starlink%20V4." target="_blank" rel="noopener">Commander</a>
+    </nav>
+  </div>
+</header>
+
+<main id="haut">
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Internet rapide, là où les câbles s'arrêtent.</h1>
+      <p class="lead">Starlink Connect vend des kits Starlink V4 Standard neufs, les active selon votre région et vous aide à les installer.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://wa.me/2290169821059?text=Bonjour%20Starlink%20Connect%2C%20je%20souhaite%20commander%20un%20kit%20Starlink%20V4." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 1 1 6.96 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.13-.56.12-.17.25-.64.8-.78.96-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.88c-.25-.43.25-.4.72-1.33.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.75 1.58.68 2.2.74 3 .62.49-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.1-.23-.17-.48-.29Z"/></svg>
+          Commander sur WhatsApp
+        </a>
+        <a class="btn ghost" href="#kit">Voir le kit</a>
+      </div>
+      <p class="hero-note">Livraison rapide. Réponse sur WhatsApp.</p>
+    </div>
+
+    <div class="radar" role="img" aria-label="Schéma : le kit au centre, avec un Wi-Fi qui couvre jusqu'à 100 mètres en champ libre">
+      <svg viewBox="0 0 400 400">
+        <circle class="ring r3" cx="200" cy="200" r="190"/>
+        <circle class="ring" cx="200" cy="200" r="130"/>
+        <circle class="ring r1" cx="200" cy="200" r="70"/>
+        <circle class="pulse" cx="200" cy="200" r="190"/>
+        <circle cx="200" cy="200" r="14" fill="#1B55F2"/>
+        <circle cx="200" cy="200" r="5" fill="#fff"/>
+        <text class="radar-label" x="200" y="244" text-anchor="middle">Votre kit</text>
+        <text class="radar-label soft" x="200" y="36" text-anchor="middle">jusqu'à 100 m en champ libre</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Un kit, et quelqu'un pour vous accompagner.</h2>
+    <p class="intro">Nous ne vous laissons pas seul avec une antenne dans un carton.</p>
+    <div class="services">
+      <div class="service">
+        <h3>Vente de kits neufs</h3>
+        <p>Kits Starlink V4 Standard neufs, avec tout le nécessaire pour démarrer.</p>
+      </div>
+      <div class="service">
+        <h3>Activation rapide</h3>
+        <p>Nous activons votre kit rapidement, selon votre région.</p>
+      </div>
+      <div class="service">
+        <h3>Assistance technique</h3>
+        <p>Un accompagnement complet, de l'installation à la première connexion.</p>
+      </div>
+      <div class="service">
+        <h3>Dépannage</h3>
+        <p>Un problème avec votre kit ? Écrivez-nous sur WhatsApp, nous cherchons la cause avec vous.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="photos" id="photos">
+  <div class="wrap">
+    <h2>Le kit en photos</h2>
+    <p class="intro">Voilà ce que vous recevez.</p>
+    <div class="photo-grid">
+      <figure class="wide">
+        <div class="frame"><img src="images/kit-complet.jpg" alt="Kit Starlink avec l'antenne, le routeur et les câbles posés sur une table" width="1080" height="608" loading="lazy"></div>
+        <figcaption>Le kit complet : antenne, routeur et câbles.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/contenu-boite.jpg" alt="Intérieur d'une boîte Starlink ouverte avec le routeur, le câble et l'alimentation" width="720" height="960" loading="lazy"></div>
+        <figcaption>Dans la boîte : routeur, câble et alimentation.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/boites-neuves.jpg" alt="Deux boîtes de kits Starlink neufs, fermées, l'une à côté de l'autre" width="1080" height="607" loading="lazy"></div>
+        <figcaption>Des kits neufs, dans leur emballage d'origine.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/stock-kits.jpg" alt="Boîte de kit Starlink posée sur une palette de boîtes" width="608" height="1080" loading="lazy"></div>
+        <figcaption>Nos kits en stock.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="specs-band" id="kit">
+  <div class="wrap">
+    <h2>Le kit Starlink V4 Standard</h2>
+    <p class="intro">Conçu pour fonctionner à l'extérieur et dans les zones reculées.</p>
+    <dl class="spec-list">
+      <div class="spec"><dt>Portée Wi-Fi</dt><dd>jusqu'à 100 m en champ libre</dd></div>
+      <div class="spec"><dt>Débit moyen en réception</dt><dd>100 à 400 Mbps</dd></div>
+      <div class="spec"><dt>Installation</dt><dd>facile, tout est inclus</dd></div>
+      <div class="spec"><dt>Résistance</dt><dd>pluie, chaleur, poussière</dd></div>
+    </dl>
+    <p class="fine">Le débit et la portée varient selon votre zone, les obstacles et la météo.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>De la commande à la connexion</h2>
+    <ol class="steps">
+      <li><h3>Vous nous écrivez</h3><p>Sur WhatsApp, dites-nous où vous êtes et ce dont vous avez besoin.</p></li>
+      <li><h3>Nous livrons</h3><p>Votre kit neuf arrive chez vous.</p></li>
+      <li><h3>Nous activons</h3><p>L'activation se fait selon votre région.</p></li>
+      <li><h3>Vous vous connectez</h3><p>Branchez, placez l'antenne à ciel ouvert, et c'est parti.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details>
+        <summary>Où puis-je utiliser le kit ?</summary>
+        <p>Le kit est pensé pour les zones reculées. L'activation dépend de votre région : écrivez-nous votre localité sur WhatsApp et nous vous confirmons.</p>
+      </details>
+      <details>
+        <summary>Le kit est-il difficile à installer ?</summary>
+        <p>Non. Tout est inclus dans le kit, et nous vous accompagnons à distance si vous le souhaitez.</p>
+      </details>
+      <details>
+        <summary>Quel est le prix ?</summary>
+        <p>Contactez-nous sur WhatsApp pour connaître le prix actuel et les délais de livraison.</p>
+      </details>
+      <details>
+        <summary>Mon kit ne fonctionne pas bien, que faire ?</summary>
+        <p>Écrivez-nous sur WhatsApp en décrivant le problème. Nous vous aidons à le résoudre.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-box">
+    <div>
+      <h2>Commandez ou demandez de l'aide</h2>
+      <p class="phone">+229 01 69 82 10 59</p>
+    </div>
+    <div class="contact-side">
+      <p style="margin-bottom:18px">Une question avant d'acheter ? Un kit à dépanner ? Écrivez-nous.</p>
+      <a class="btn" href="https://wa.me/2290169821059?text=Bonjour%20Starlink%20Connect%2C%20j%27ai%20une%20question." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© Starlink Connect. Revendeur indépendant de kits Starlink. Starlink est une marque de SpaceX ; Starlink Connect n'est pas affilié à SpaceX.</p>
+    <p>+229 01 69 82 10 59</p>
+  </div>
+</footer>
+
+<a class="btn float-wa" href="https://wa.me/2290169821059?text=Bonjour%20Starlink%20Connect%2C%20je%20souhaite%20commander%20un%20kit%20Starlink%20V4." target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 1 1 6.96 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.13-.56.12-.17.25-.64.8-.78.96-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.88c-.25-.43.25-.4.72-1.33.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.75 1.58.68 2.2.74 3 .62.49-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.1-.23-.17-.48-.29Z"/></svg>
+  Commander
+</a>
+
+</body>
+</html>
