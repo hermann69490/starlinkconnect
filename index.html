@@ -76,8 +76,8 @@
   .photos{background:var(--paper);padding-top:0}
   .photo-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .photo-grid figure{margin:0}
-  .photo-grid img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px;background:var(--sky)}
-  .photo-grid .frame{aspect-ratio:1;overflow:hidden;border-radius:6px}
+  .photo-grid img{display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+  .photo-grid .frame{aspect-ratio:1;overflow:hidden;border-radius:6px;position:relative;background:var(--sky)}
   .photo-grid .wide .frame{aspect-ratio:16/8}
   .photo-grid .wide{grid-column:1/-1}
   .photo-grid figcaption{margin-top:10px;font-size:.92rem;color:var(--ink-soft);max-width:44ch}
@@ -228,19 +228,19 @@
     <p class="intro">Voilà ce que vous recevez.</p>
     <div class="photo-grid">
       <figure class="wide">
-        <div class="frame"><img src="images/kit-complet.jpg" alt="Kit Starlink avec l'antenne, le routeur et les câbles posés sur une table" width="1080" height="608" loading="lazy"></div>
+        <div class="frame"><img src="kit-complet.jpg" onerror="this.onerror=null;this.src='images/'+this.getAttribute('src')" alt="Kit Starlink avec l'antenne, le routeur et les câbles posés sur une table" width="1080" height="608"></div>
         <figcaption>Le kit complet : antenne, routeur et câbles.</figcaption>
       </figure>
       <figure>
-        <div class="frame"><img src="images/contenu-boite.jpg" alt="Intérieur d'une boîte Starlink ouverte avec le routeur, le câble et l'alimentation" width="720" height="960" loading="lazy"></div>
+        <div class="frame"><img src="contenu-boite.jpg" onerror="this.onerror=null;this.src='images/'+this.getAttribute('src')" alt="Intérieur d'une boîte Starlink ouverte avec le routeur, le câble et l'alimentation" width="720" height="960"></div>
         <figcaption>Dans la boîte : routeur, câble et alimentation.</figcaption>
       </figure>
       <figure>
-        <div class="frame"><img src="images/boites-neuves.jpg" alt="Deux boîtes de kits Starlink neufs, fermées, l'une à côté de l'autre" width="1080" height="607" loading="lazy"></div>
+        <div class="frame"><img src="boites-neuves.jpg" onerror="this.onerror=null;this.src='images/'+this.getAttribute('src')" alt="Deux boîtes de kits Starlink neufs, fermées, l'une à côté de l'autre" width="1080" height="607"></div>
         <figcaption>Des kits neufs, dans leur emballage d'origine.</figcaption>
       </figure>
       <figure>
-        <div class="frame"><img src="images/stock-kits.jpg" alt="Boîte de kit Starlink posée sur une palette de boîtes" width="608" height="1080" loading="lazy"></div>
+        <div class="frame"><img src="stock-kits.jpg" onerror="this.onerror=null;this.src='images/'+this.getAttribute('src')" alt="Boîte de kit Starlink posée sur une palette de boîtes" width="608" height="1080"></div>
         <figcaption>Nos kits en stock.</figcaption>
       </figure>
     </div>
